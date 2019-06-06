@@ -29,7 +29,7 @@ namespace FindPass
 		void AddItemBtnClick(object sender, EventArgs e)
 		{	
 			string name =  textBox1.Text;
-			StreamWriter text = new StreamWriter(@"C:\Users\KucharskiL\Downloads\SharpDevelopPortable\Project.txt", true);
+			StreamWriter text = new StreamWriter(@"all_projects_path", true);
 			text.WriteLine(name);
 			text.Close();
 			data_uploader();
@@ -41,8 +41,8 @@ namespace FindPass
 			string name =  textBox1.Text;
 			string login = textBox2.Text;
 			string password = textBox3.Text;
-			string filenameLog = @"\\g02.fujitsu.local\DFS\LDZT\users\KucharskiL\Credentials\" + name + "Log.txt";
-			string filenamePass = @"\\g02.fujitsu.local\DFS\LDZT\users\KucharskiL\Credentials\" + name + "Pass.txt";
+			string filenameLog = @"credential_path" + name + "Log.txt";
+			string filenamePass = @"credential_path" + name + "Pass.txt";
 			if (File.Exists(filenameLog))
     		{    
 				MessageBox.Show("This object already exist. Please remove it first.");
