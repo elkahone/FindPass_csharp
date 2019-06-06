@@ -23,6 +23,7 @@ namespace FindPass
 			InitializeComponent();
 
 		}
+// logon form		
 		void Button1Click(object sender, EventArgs e)
 		{
 			string pass = "elkahone1";
@@ -34,7 +35,7 @@ namespace FindPass
 					passbox.Clear();
 				}			}
 		}
-		
+//progress bar only for visual effect		
 		void Timer1Tick(object sender, EventArgs e)
 		{
 			progressBar1.Maximum = 100;
