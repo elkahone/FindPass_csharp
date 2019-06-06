@@ -21,10 +21,10 @@ namespace FindPass
 	/// </summary>
 	public partial class MainForm : Form
 	{
-		# file contains all projects - directory path
-		string all_projects;
-		# set credential directory path
-		string credentialpath;
+		# path to the local file that contains all listed projects
+		string all_projects_path;
+		# path to the direcotry where are all crdential files
+		string credential_path;
 		public MainForm()
 		{
 			InitializeComponent();
@@ -41,7 +41,7 @@ namespace FindPass
 			string project_text = comboBox1.Text;
 			string old;
 			string n = "";
-			StreamReader sr = File.OpenText(all_projects);
+			StreamReader sr = File.OpenText(all_projects_path);
 			while ((old = sr.ReadLine()) !=null)
 			{
 				if(!old.Contains(project_text))
@@ -50,9 +50,9 @@ namespace FindPass
 				}
 			}
 			sr.Close();
-			File.WriteAllText(all_projects, n);
-			File.Delete(@"credentialpath" + project_text + "Log.txt");
-			File.Delete(@"credentialpath" + project_text + "Pass.txt");
+			File.WriteAllText(all_projects_path, n);
+			File.Delete(@"credential_path" + project_text + "Log.txt");
+			File.Delete(@"credential_path" + project_text + "Pass.txt");
 			Thread.Sleep(500);
 			textBox1.Clear();
 			textBox2.Clear();
@@ -63,7 +63,7 @@ namespace FindPass
 		public void update_project_list()
 		{
 			comboBox1.Items.Clear();
-			var projects = File.ReadAllLines(all_projects);
+			var projects = File.ReadAllLines(all_projects_path);
 			comboBox1.Items.AddRange(projects);
 		}
 		void RefreschBtnClick(object sender, EventArgs e)
@@ -73,10 +73,10 @@ namespace FindPass
 		void ComboBox1SelectedValueChanged(object sender, EventArgs e)
 		{
 			string project = comboBox1.SelectedItem.ToString();
-			StreamReader sr1 = File.OpenText(@"credentailpath" + project + "Log.txt");
+			StreamReader sr1 = File.OpenText(@"credentail_path" + project + "Log.txt");
 			textBox1.Text = sr1.ReadLine();
 			sr1.Close();
-			StreamReader sr2 = File.OpenText(@"credentailpath" + project + "Pass.txt");
+			StreamReader sr2 = File.OpenText(@"credentail_path" + project + "Pass.txt");
 			textBox2.Text = sr2.ReadLine();
 			sr2.Close();
 	
@@ -124,7 +124,7 @@ namespace FindPass
 			string name =  comboBox1.Text;
 			string password = textBox2.Text;
 			File.Delete(@"credentailpath" + name + "Pass.txt");
-			string filenamePass = @"credentialpath" + name + "Pass.txt";
+			string filenamePass = @"credential_path" + name + "Pass.txt";
 			File.WriteAllText(filenamePass, password);
 			MessageBox.Show("Password has been updated!");
 		} 
