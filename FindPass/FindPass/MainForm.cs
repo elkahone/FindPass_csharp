@@ -23,7 +23,7 @@ namespace FindPass
 	{
 		# path to the local file that contains all listed projects
 		string all_projects_path;
-		# path to the direcotry where are all crdential files
+		# path to the direcotry where are all credential files
 		string credential_path;
 		public MainForm()
 		{
