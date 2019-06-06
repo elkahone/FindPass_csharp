@@ -23,7 +23,7 @@ namespace FindPass
 			InitializeComponent();
 
 		}
-# add new project(profile) to the project list
+//add new project(profile) to the project list
 		void AddItemBtnClick(object sender, EventArgs e)
 		{	
 			string name =  textBox1.Text;
@@ -33,7 +33,7 @@ namespace FindPass
 			data_uploader();
 			MessageBox.Show("New Item added successfully!");
 		}
-# create file with the password and login name		
+//create file with the password and login name		
 		void data_uploader()
 		{
 			string name =  textBox1.Text;
