@@ -21,7 +21,10 @@ namespace FindPass
 	/// </summary>
 	public partial class MainForm : Form
 	{
-		string all_projects = @"C:\Users\KucharskiL\Downloads\SharpDevelopPortable\Project.txt";
+		# file contains all projects - directory path
+		string all_projects;
+		# set credential directory path
+		string credentialpath;
 		public MainForm()
 		{
 			InitializeComponent();
@@ -48,8 +51,8 @@ namespace FindPass
 			}
 			sr.Close();
 			File.WriteAllText(all_projects, n);
-			File.Delete(@"\\g02.fujitsu.local\DFS\LDZT\users\KucharskiL\Credentials\" + project_text + "Log.txt");
-			File.Delete(@"\\g02.fujitsu.local\DFS\LDZT\users\KucharskiL\Credentials\" + project_text + "Pass.txt");
+			File.Delete(@"credentialpath" + project_text + "Log.txt");
+			File.Delete(@"credentialpath" + project_text + "Pass.txt");
 			Thread.Sleep(500);
 			textBox1.Clear();
 			textBox2.Clear();
@@ -70,10 +73,10 @@ namespace FindPass
 		void ComboBox1SelectedValueChanged(object sender, EventArgs e)
 		{
 			string project = comboBox1.SelectedItem.ToString();
-			StreamReader sr1 = File.OpenText(@"\\g02.fujitsu.local\DFS\LDZT\users\KucharskiL\Credentials\" + project + "Log.txt");
+			StreamReader sr1 = File.OpenText(@"credentailpath" + project + "Log.txt");
 			textBox1.Text = sr1.ReadLine();
 			sr1.Close();
-			StreamReader sr2 = File.OpenText(@"\\g02.fujitsu.local\DFS\LDZT\users\KucharskiL\Credentials\" + project + "Pass.txt");
+			StreamReader sr2 = File.OpenText(@"credentailpath" + project + "Pass.txt");
 			textBox2.Text = sr2.ReadLine();
 			sr2.Close();
 	
@@ -120,8 +123,8 @@ namespace FindPass
 		{
 			string name =  comboBox1.Text;
 			string password = textBox2.Text;
-			File.Delete(@"\\g02.fujitsu.local\DFS\LDZT\users\KucharskiL\Credentials\" + name + "Pass.txt");
-			string filenamePass = @"\\g02.fujitsu.local\DFS\LDZT\users\KucharskiL\Credentials\" + name + "Pass.txt";
+			File.Delete(@"credentailpath" + name + "Pass.txt");
+			string filenamePass = @"credentialpath" + name + "Pass.txt";
 			File.WriteAllText(filenamePass, password);
 			MessageBox.Show("Password has been updated!");
 		} 
