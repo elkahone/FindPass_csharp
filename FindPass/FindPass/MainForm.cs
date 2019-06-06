@@ -30,11 +30,13 @@ namespace FindPass
 			InitializeComponent();
 			update_project_list();
 		}
+# open form to add new project with credentials to the lsit		
 		void AddBtnClick(object sender, EventArgs e)
 		{
 			Add_project add_project = new Add_project();
 			add_project.Show();
 		}
+# remove an existing profile from database list		
 		void RemoveBtnClick(object sender, EventArgs e)
 		{
 			
@@ -59,17 +61,19 @@ namespace FindPass
 			comboBox1.Text = "Select logon profile";
 			update_project_list();
 		}
-		
+# update combobox with all existing profiles		
 		public void update_project_list()
 		{
 			comboBox1.Items.Clear();
 			var projects = File.ReadAllLines(all_projects_path);
 			comboBox1.Items.AddRange(projects);
 		}
+# run update combobox method		
 		void RefreschBtnClick(object sender, EventArgs e)
 		{
 			update_project_list();
 		}
+# raise an event when selectig item from combobox		
 		void ComboBox1SelectedValueChanged(object sender, EventArgs e)
 		{
 			string project = comboBox1.SelectedItem.ToString();
@@ -81,6 +85,7 @@ namespace FindPass
 			sr2.Close();
 	
 		}
+# raise events when moving mouse		
 		void AddBtnMouseMove(object sender, MouseEventArgs e)
 		{
 			info.Text = "Add new Logon profile (profiel name, login, password)";
@@ -97,7 +102,7 @@ namespace FindPass
 		{
 			info.Text = "";
 		}
-		
+# password generator method		
 		public string CreatePassword(int length)
 		{
 	        string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
@@ -110,6 +115,7 @@ namespace FindPass
 	        return newpassBox.Text =  res.ToString();
 	        
 		}
+# run create password method		
 		void Button1Click(object sender, EventArgs e)
 		{
 			int i = Convert.ToInt32(textBox3.Text);
@@ -119,6 +125,7 @@ namespace FindPass
 		{
 			info.Text = "Set new password for current logon profile";
 		}
+# update new password to the file
 		void ChangePassBtnClick(object sender, EventArgs e)
 		{
 			string name =  comboBox1.Text;
