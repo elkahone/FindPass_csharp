@@ -1,4 +1,4 @@
-# FindPass_csharp
+# FindPass
 
 This repository contains all files created in the c# project.
-The is an app which can be use as a credential menager (adding and removing logon profiles, updating password)
+This app can be used as a credential menager (adding and removing logon profiles, updating password)
